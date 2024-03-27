@@ -9,7 +9,22 @@
 </head>
 <body>
     <h1>Welcome to django tutorial</h1>
-    <span>{{view_content}}</span>
+    {% if access_records %}
+    <table>
+        <thead>
+            <th>Company Name</th>
+            <th>Date Created</th>
+        </thead>
+        {% for acc in access_records %}
+            <tr>
+                <td>{{acc.name}}</td>
+                <td>{{acc.date}}</td>
+            </tr>
+        {% endfor %}
+    </table>
+    {% else %}
+        <h2>No Data Found</h2>
+    {% endif %}
     <div>
         <img src="{% static 'images/python.png'%}" alt="" srcset="">
         
