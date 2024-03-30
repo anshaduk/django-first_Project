@@ -18,3 +18,11 @@ def form_view(req):
             print('Description:'+form.cleaned_data['description'])
 
     return render(req,'first_app/form.html',context={'form':form})
+
+def web_page_view(req):
+    form=forms.webpage1()
+    if req.method=='POST':
+        form=forms.webpage1(req.POST)
+        if form.is_valid():
+            form.save(commit=True)
+    return render(req,'first_app/form.html',context={'form':form})
